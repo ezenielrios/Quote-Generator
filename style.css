@@ -4,6 +4,7 @@ html {
     box-sizing: border-box;
 }
 
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -18,10 +19,34 @@ body {
     justify-content: center;
 }
 
+
+.gradient-border {
+  --borderWidth: 3px;
+  background: #fcfcfc;
+  position: relative;
+  border-radius: var(--borderWidth);
+  padding: 20px 30px; 
+  box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.2); 
+}
+.gradient-border:after {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 3s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+
 .quote-container {
     width: auto;
     max-width: 900px;
-    padding: 20px 30px;
+    padding: 20px 30px; 
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.4);
     box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.2);
@@ -97,6 +122,18 @@ button:active {
     100% { transform: rotate(360deg); }
   }
 
+  @keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* Media Query: Tablet or Smaller */
 @media screen and (max-width: 1000px) {
     .quote-container{
@@ -107,3 +144,4 @@ button:active {
         font-size: 2.5rem;
     }
 }
+
